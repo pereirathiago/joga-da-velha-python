@@ -17,17 +17,17 @@ def printBoard(board):
             print("------")
 
 
-def getInputValido(mensage):
+def getInputValido(message):
     try:
-        n = int(input(mensage))
+        n = int(input(message))
         if(n >= 1 and n <= 3):
             return n - 1
         else:
             print("Pô, não ta vendo q só tem coluna e linha 1,2,3???")
-            return getInputValido(mensage)
+            return getInputValido(message)
     except:
         print("Numero nao valido")
-        return getInputValido(mensage)
+        return getInputValido(message)
 
 
 def verificaMovimento(board, i , j):
