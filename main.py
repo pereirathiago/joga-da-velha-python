@@ -13,7 +13,7 @@ while c != "N":
         
         if(verificaMovimento(board, i, j)):
             fazMovimento(board, i, j, player)
-            player = (player + 1)%2
+            player =+ 1 % 2
         else:
             print("Cê não ta vendo q ja tem ali")
         
@@ -21,7 +21,7 @@ while c != "N":
 
     print("===================")
     printBoard(board)
-    print("Ganhador = ", winner)
+    print(f"Ganhador = {player}")
     print("===================")
 
     c = input('Jogar novamente[S/N]: ')
