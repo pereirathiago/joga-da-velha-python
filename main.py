@@ -1,5 +1,4 @@
-from jogo import criarBoard, fazMovimento,  getInputValido, \
-                            printBoard, verificaGanhador,  verificaMovimento
+from jogo import *
 
 from minimax import movimentoIA
 
@@ -14,9 +13,9 @@ while c == "S":
         if(jogador == 0):
             i,j = movimentoIA(board, jogador)
         else:
-            i,j = movimentoIA(board, jogador)
-            # i = getInputValido("Digite a linha: ")
-            # j = getInputValido("Digite a coluna: ")
+            # i,j = movimentoIA(board, jogador)
+            i = getInputValido("Digite a linha: ")
+            j = getInputValido("Digite a coluna: ")
         
         if(verificaMovimento(board, i, j)):
             fazMovimento(board, i, j, jogador)
@@ -28,7 +27,7 @@ while c == "S":
 
     print("===================")
     printBoard(board)
-    print("Ganhador = ", ganhador)
+    print(f"Ganhador = {ganhador}")
     print("===================")
 
     c = input("Quer jogar mais [S/N]: ")
