@@ -1,32 +1,32 @@
-from jogo import vazio, token, verificaGanhador
+from jogo import branco, token, verificaGanhador
 
-def movimentoIA(board, player):
+def movimentoIA(board, jogador):
     possibilidades = getPosicoes(board)
-    bestValue = None
-    bestMove = None
+    melhor_valor = None
+    melhor_movimento = None
     for possibilidade in possibilidades:
-        board[possibilidade[0]][possibilidade[1]] = token[player]
-        valor = minimax(board, player)
-        board[possibilidade[0]][possibilidade[1]] = vazio
-        if(bestValue is None):
-            bestValue = valor
-            bestMove = possibilidade
-        elif(player == 0):
-            if(valor > bestValue):
-                bestValue = valor
-                bestMove = possibilidade
-        elif(player == 1):
-            if(valor < bestValue):
-                bestValue = valor
-                bestMove = possibilidade
+        board[possibilidade[0]][possibilidade[1]] = token[jogador]
+        valor = minimax(board, jogador)
+        board[possibilidade[0]][possibilidade[1]] = branco
+        if(melhor_valor is None):
+            melhor_valor = valor
+            melhor_movimento = possibilidade
+        elif(jogador == 0):
+            if(valor > melhor_valor):
+                melhor_valor = valor
+                melhor_movimento = possibilidade
+        elif(jogador == 1):
+            if(valor < melhor_valor):
+                melhor_valor = valor
+                melhor_movimento = possibilidade
 
-    return bestMove[0], bestMove[1]
+    return melhor_movimento[0], melhor_movimento[1]
 
 def getPosicoes(board):
     posicoes = []
     for i in range(3):
         for j in range(3):
-            if(board[i][j] == vazio):
+            if(board[i][j] == branco):
                 posicoes.append([i, j])
     
     return posicoes
@@ -37,26 +37,26 @@ score = {
     "O": -1
 }
 
-def minimax(board, player):
+def minimax(board, jogador):
     ganhador = verificaGanhador(board)
     if(ganhador):
         return score[ganhador]
-    player = (player + 1)%2
+    jogador = (jogador + 1)%2
     
     possibilidades = getPosicoes(board)
-    bestValue = None
+    melhor_valor = None
     for possibilidade in possibilidades:
-        board[possibilidade[0]][possibilidade[1]] = token[player]
-        valor = minimax(board, player)
-        board[possibilidade[0]][possibilidade[1]] = vazio
+        board[possibilidade[0]][possibilidade[1]] = token[jogador]
+        valor = minimax(board, jogador)
+        board[possibilidade[0]][possibilidade[1]] = branco
 
-        if(bestValue is None):
-            bestValue = valor
-        elif(player == 0):
-            if(valor > bestValue):
-                bestValue = valor
-        elif(player == 1):
-            if(valor < bestValue):
-                bestValue = valor
+        if(melhor_valor is None):
+            melhor_valor = valor
+        elif(jogador == 0):
+            if(valor > melhor_valor):
+                melhor_valor = valor
+        elif(jogador == 1):
+            if(valor < melhor_valor):
+                melhor_valor = valor
 
-    return bestValue
+    return melhor_valor
