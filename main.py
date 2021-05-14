@@ -12,10 +12,12 @@ while c == "S":
         print("===================")
         if(jogador == 0):
             i,j = movimentoIA(board, jogador)
+            # i = getInputValido("Digite a linha: ")
+            # j = getInputValido("Digite a coluna: ")
         else:
-            # i,j = movimentoIA(board, jogador)
-            i = getInputValido("Digite a linha: ")
-            j = getInputValido("Digite a coluna: ")
+            i,j = movimentoIA(board, jogador)
+            # i = getInputValido("Digite a linha: ")
+            # j = getInputValido("Digite a coluna: ")
         
         if(verificaMovimento(board, i, j)):
             fazMovimento(board, i, j, jogador)
