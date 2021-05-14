@@ -2,25 +2,24 @@ from jogo import *
 
 from minimax import movimentoIA
 
-c = ""
-while c != "N":
-    player = 0
+c = "S"
+jogador = 0 # jogador 1
+while c == "S":
     board = criarBoard()
     ganhador = verificaGanhador(board)
     while(not ganhador):
         printBoard(board)
         print("===================")
-
-        if(player == 0):
-            i,j = movimentoIA(board, player)
+        if(jogador == 0):
+            i,j = movimentoIA(board, jogador)
         else:
-            i,j = movimentoIA(board, player)
-            # i = getInputValido("Digite a linha: ")
-            # j = getInputValido("Digite a coluna: ")
+            # i,j = movimentoIA(board, jogador)
+            i = getInputValido("Digite a linha: ")
+            j = getInputValido("Digite a coluna: ")
         
         if(verificaMovimento(board, i, j)):
-            fazMovimento(board, i, j, player)
-            player = (player + 1)%2
+            fazMovimento(board, i, j, jogador)
+            jogador = (jogador + 1)%2
         else:
             print("Cê não ta vendo q ja tem ali")
         
@@ -28,7 +27,7 @@ while c != "N":
 
     print("===================")
     printBoard(board)
-    print(f"Ganhador = {player}")
+    print(f"Ganhador = {ganhador}")
     print("===================")
 
-    c = input('Jogar novamente[S/N]: ')
+    c = input("Quer jogar mais [S/N]: ")
