@@ -6,8 +6,8 @@ c = ""
 while c != "N":
     player = 0
     board = criarBoard()
-    winner = verificaGanhador(board)
-    while(not winner):
+    ganhador = verificaGanhador(board)
+    while(not ganhador):
         printBoard(board)
         print("===================")
 
@@ -24,7 +24,7 @@ while c != "N":
         else:
             print("Cê não ta vendo q ja tem ali")
         
-        winner = verificaGanhador(board)
+        ganhador = verificaGanhador(board)
 
     print("===================")
     printBoard(board)
