@@ -21,7 +21,7 @@ while c == "S":
             fazMovimento(board, i, j, jogador)
             jogador = (jogador + 1)%2
         else:
-            print("A posicao informado ja esta ocupada")
+            print("Cê não ta vendo q ja tem ali")
         
         ganhador = verificaGanhador(board)
 

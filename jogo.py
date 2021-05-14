@@ -23,7 +23,7 @@ def getInputValido(mensagem):
         if(n >= 1 and n <= 3):
             return n - 1
         else:
-            print("Numero precisa estar entra 1 e 3")
+            print("Pô, não ta vendo q só tem coluna e linha 1,2,3???")
             return getInputValido(mensagem)
     except:
         print("Numero nao valido")
