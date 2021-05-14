@@ -1,34 +1,30 @@
-from jogo import *
+from jogo import criarBoard, fazMovimento,  getInputValido, \
+                            printBoard, verificaGanhador,  verificaMovimento
 
 from minimax import movimentoIA
 
-c = ""
-while c != "N":
-    player = 0
-    board = criarBoard()
-    ganhador = verificaGanhador(board)
-    while(not ganhador):
-        printBoard(board)
-        print("===================")
-
-        if(player == 0):
-            i,j = movimentoIA(board, player)
-        else:
-            i,j = movimentoIA(board, player)
-            # i = getInputValido("Digite a linha: ")
-            # j = getInputValido("Digite a coluna: ")
-        
-        if(verificaMovimento(board, i, j)):
-            fazMovimento(board, i, j, player)
-            player = (player + 1)%2
-        else:
-            print("Cê não ta vendo q ja tem ali")
-        
-        ganhador = verificaGanhador(board)
-
-    print("===================")
+jogador = 0 # jogador 1
+board = criarBoard()
+ganhador = verificaGanhador(board)
+while(not ganhador):
     printBoard(board)
-    print(f"Ganhador = {player}")
     print("===================")
+    if(jogador == 0):
+        i,j = movimentoIA(board, jogador)
+    else:
+        i,j = movimentoIA(board, jogador)
+        # i = getInputValido("Digite a linha: ")
+        # j = getInputValido("Digite a coluna: ")
+    
+    if(verificaMovimento(board, i, j)):
+        fazMovimento(board, i, j, jogador)
+        jogador = (jogador + 1)%2
+    else:
+        print("A posicao informado ja esta ocupada")
+    
+    ganhador = verificaGanhador(board)
 
-    c = input('Jogar novamente[S/N]: ')
+print("===================")
+printBoard(board)
+print("Ganhador = ", ganhador)
+print("===================")
